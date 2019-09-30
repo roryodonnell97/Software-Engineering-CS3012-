@@ -1,6 +1,3 @@
-# Python Program for Lowest Common Ancestor in a Binary Tree 
-# O(n) solution to find LCS of two given values n1 and n2 
-  
 # A binary tree node 
 class Node: 
     # Constructor to create a new binary node 
@@ -38,7 +35,7 @@ def findPath( root, path, k):
     return False
   
 # Returns LCA if node n1 , n2 are present in the given 
-# binary tre otherwise return -1 
+# binary tree otherwise return -1 
 def findLCA(root, n1, n2): 
   
     # To store paths to n1 and n2 fromthe root 
@@ -60,7 +57,7 @@ def findLCA(root, n1, n2):
   
   
 # Driver program to test above function 
-# Let's create the Binary Tree shown in above diagram 
+# Create binary tree 
 root = Node(1) 
 root.left = Node(2) 
 root.right = Node(3) 
@@ -69,7 +66,7 @@ root.left.right = Node(5)
 root.right.left = Node(6) 
 root.right.right = Node(7) 
   
-print ("LCA(4, 5) = %d") %(findLCA(root, 4, 5,)) 
-print ("LCA(4, 6) = %d") %(findLCA(root, 4, 6)) 
-print ("LCA(3, 4) = %d") %(findLCA(root,3,4)) 
-print ("LCA(2, 4) = %d") %(findLCA(root,2, 4)) 
+print ("LCA(4, 5) = " , findLCA(root, 4, 5)) 
+print ("LCA(4, 6) = " , findLCA(root, 4, 6)) 
+print ("LCA(3, 4) = " , findLCA(root, 3, 4)) 
+print ("LCA(2, 4) = " , findLCA(root, 2, 4)) 
