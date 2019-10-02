@@ -1,3 +1,5 @@
+import unittest
+
 # A binary tree node 
 class Node: 
     # Constructor to create a new binary node 
@@ -66,7 +68,31 @@ root.left.right = Node(5)
 root.right.left = Node(6) 
 root.right.right = Node(7) 
   
-print ("LCA(4, 5) = " , findLCA(root, 4, 5)) 
-print ("LCA(4, 6) = " , findLCA(root, 4, 6)) 
-print ("LCA(3, 4) = " , findLCA(root, 3, 4)) 
-print ("LCA(2, 4) = " , findLCA(root, 2, 4)) 
+# print ("LCA(4, 5) = " , findLCA(root, 4, 5)) 
+# print ("LCA(4, 6) = " , findLCA(root, 4, 6)) 
+# print ("LCA(3, 4) = " , findLCA(root, 3, 4)) 
+# print ("LCA(2, 4) = " , findLCA(root, 2, 4)) 
+
+class TestLCA(unittest.TestCase):
+
+
+ def test_findLCA(self):
+        expectedOutput = 2
+        actualOutput = findLCA(root, 4, 5)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 1
+        actualOutput = findLCA(root, 4, 6)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 1
+        actualOutput = findLCA(root, 3, 4)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 2
+        actualOutput = findLCA(root, 2, 4)
+        self.assertEqual(actualOutput, expectedOutput)    
+
+
+if __name__ == '__main__':
+    unittest.main()
