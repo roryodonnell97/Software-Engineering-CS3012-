@@ -77,6 +77,8 @@ class TestLCA(unittest.TestCase):
 
 
  def test_findLCA(self):
+
+        # basic cases 
         expectedOutput = 2
         actualOutput = findLCA(root, 4, 5)
         self.assertEqual(actualOutput, expectedOutput)
@@ -91,7 +93,41 @@ class TestLCA(unittest.TestCase):
 
         expectedOutput = 2
         actualOutput = findLCA(root, 2, 4)
-        self.assertEqual(actualOutput, expectedOutput)    
+        self.assertEqual(actualOutput, expectedOutput)
+
+        # example where both nodes are equal
+        expectedOutput = 7
+        actualOutput = findLCA(root, 7, 7)
+        self.assertEqual(actualOutput, expectedOutput)          
+
+
+        # error cases
+        # example where a node is 0
+        expectedOutput = -1
+        actualOutput = findLCA(root, 0, 5)
+        self.assertEqual(actualOutput, expectedOutput) 
+
+        # example where both nodes are 0
+        expectedOutput = -1
+        actualOutput = findLCA(root, 0, 0)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        # example where one node is not in tree
+        expectedOutput = -1
+        actualOutput = findLCA(root, 8, 5)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        # example where two nodes aren't in tree
+        expectedOutput = -1
+        actualOutput = findLCA(root, 9, -7)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        # example where a node given is negative
+        expectedOutput = -1
+        actualOutput = findLCA(root, -1, 4)
+        self.assertEqual(actualOutput, expectedOutput)
+
+               
 
 
 if __name__ == '__main__':
