@@ -126,6 +126,51 @@ class TestLCA(unittest.TestCase):
         actualOutput = findLCA(root, -1, 4)
         self.assertEqual(actualOutput, expectedOutput)
 
+        # clear tree for next tests
+        root = None
+
+
+        # DAG Unit Tests                                              #             1
+        # Example given in DAG slide                                  #            / \
+        root = Node(1)                                                #           2   5
+        root.left = Node(2)                                           #           |   |
+        root.left.left = Node(3)                                      #           3   6
+        root.left.left.left = Node(4)                                 #           |  /
+        root.right = Node(5)                                          #           4
+        root.right.right = Node(6)                                    #           |
+        root.right.right.left = Node(4)                               #           7
+        root.left.left.left.left = Node(7)
+        root.right.right.left.left = Node(7)
+
+        # example where nodes are equal
+        expectedOutput = 3
+        actualOutput = findLCA(root, 3, 3)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        # standard dag examples
+        expectedOutput = 1
+        actualOutput = findLCA(root, 1, 7)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 2
+        actualOutput = findLCA(root, 2, 3)
+        self.assertEqual(actualOutput, expectedOutput)        
+
+        expectedOutput = 6                      # Incorrect output
+        actualOutput = findLCA(root, 4, 6)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 1
+        actualOutput = findLCA(root, 2, 5)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 6                       # Incorrect output
+        actualOutput = findLCA(root, 6, 7)
+        self.assertEqual(actualOutput, expectedOutput)
+        
+
+
+
                
 
 

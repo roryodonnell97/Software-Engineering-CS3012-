@@ -6,7 +6,8 @@ class Node:
         self.key =  key 
         self.left = None
         self.right = None
-  
+
+
 # Finds the path from root node to given root of the tree. 
 # Stores the path in a list path[], returns true if path  
 # exists otherwise false 
@@ -34,7 +35,8 @@ def findPath( root, path, k):
        
     path.pop() 
     return False
-  
+
+
 # Returns LCA if node n1 , n2 are present in the given 
 # binary tree otherwise return -1 
 def findLCA(root, n1, n2): 
