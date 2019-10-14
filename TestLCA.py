@@ -147,6 +147,11 @@ class TestLCA(unittest.TestCase):
         actualOutput = findLCA(root, 3, 3)
         self.assertEqual(actualOutput, expectedOutput)
 
+        # example where nodes aren't in graph 
+        expectedOutput = -1
+        actualOutput = findLCA(root, 0, 8)
+        self.assertEqual(actualOutput, expectedOutput)
+
         # standard dag examples
         expectedOutput = 1
         actualOutput = findLCA(root, 1, 7)
@@ -154,6 +159,14 @@ class TestLCA(unittest.TestCase):
 
         expectedOutput = 2
         actualOutput = findLCA(root, 2, 3)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 4                      
+        actualOutput = findLCA(root, 4, 7)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 5                      # Incorrect output
+        actualOutput = findLCA(root, 5, 4)
         self.assertEqual(actualOutput, expectedOutput)        
 
         expectedOutput = 6                      # Incorrect output
