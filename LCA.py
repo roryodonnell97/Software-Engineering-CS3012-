@@ -52,7 +52,7 @@ def check_for_two_paths( root, path, k):
             (findPath(root.right, path, k))): 
         return root     
 
-# function which checks if tree is DAG and returns root which has two paths too desired node
+# function which checks if tree is DAG and returns a root which has two paths too desired node (k)
 def is_tree_DAG( root, path, k):
 
     if root is None: 
@@ -95,3 +95,7 @@ def findLCA(root, n1, n2):
             break
         i += 1
     return path1[i-1] 
+
+# function which uses is_tree_DAG(root,path,k) for nodes n1 n2 given in LCA query. 
+# If not DAG, find LCA normal way
+# else Compare paths to nodes and find LCA between paths (should be n1 or n2 k found in either paths, whichever is first(higher))

@@ -161,25 +161,25 @@ class TestLCA(unittest.TestCase):
         actualOutput = findLCA(root, 2, 3)
         self.assertEqual(actualOutput, expectedOutput)
 
-        # expectedOutput = 4                      
-        # actualOutput = findLCA(root, 4, 7)
-        # self.assertEqual(actualOutput, expectedOutput)
+        expectedOutput = 4                      
+        actualOutput = findLCA(root, 4, 7)
+        self.assertEqual(actualOutput, expectedOutput)
 
-        # expectedOutput = 5                      # Incorrect output
-        # actualOutput = findLCA(root, 5, 4)
-        # self.assertEqual(actualOutput, expectedOutput)        
+        expectedOutput = 5                      # Incorrect output
+        actualOutput = findLCA(root, 5, 4)
+        self.assertEqual(actualOutput, expectedOutput)        
 
-        # expectedOutput = 6                      # Incorrect output
-        # actualOutput = findLCA(root, 4, 6)
-        # self.assertEqual(actualOutput, expectedOutput)
+        expectedOutput = 6                      # Incorrect output
+        actualOutput = findLCA(root, 4, 6)
+        self.assertEqual(actualOutput, expectedOutput)
 
-        # expectedOutput = 1
-        # actualOutput = findLCA(root, 2, 5)
-        # self.assertEqual(actualOutput, expectedOutput)
+        expectedOutput = 1
+        actualOutput = findLCA(root, 2, 5)
+        self.assertEqual(actualOutput, expectedOutput)
 
-        # expectedOutput = 6                       # Incorrect output
-        # actualOutput = findLCA(root, 6, 7)
-        # self.assertEqual(actualOutput, expectedOutput)
+        expectedOutput = 6                       # Incorrect output
+        actualOutput = findLCA(root, 6, 7)
+        self.assertEqual(actualOutput, expectedOutput)
         
         path = []
         expectedOutput = 1
