@@ -6,6 +6,9 @@ class Node:
         self.key =  key 
         self.left = None
         self.right = None
+        self.xAncestor = False
+        self.yAncestor = False
+        self.count = 0
 
 
 # Finds the path from root node to given root of the tree. 
@@ -24,7 +27,7 @@ def findPath( root, path, k):
     # See if the k is same as root's key 
     if root.key == k : 
         return True
-  
+
     # Check if k is found in left or right sub-tree 
     if ((root.left != None and findPath(root.left, path, k)) or
             (root.right!= None and findPath(root.right, path, k))): 
@@ -35,6 +38,41 @@ def findPath( root, path, k):
        
     path.pop() 
     return False
+
+# function which checks if there is two paths from the root node to k
+def check_for_two_paths( root, path, k):
+
+    if root is None: 
+        return None
+    
+    if (root.left is None or root.right is None):
+        return None
+
+    if ((findPath(root.left, path, k)) and
+            (findPath(root.right, path, k))): 
+        return root     
+
+# function which checks if tree is DAG and returns root which has two paths too desired node
+def is_tree_DAG( root, path, k):
+
+    if root is None: 
+        return 
+    
+    if (root.left is None or root.right is None):
+        return 
+
+    if(check_for_two_paths( root, path, k) == root):
+        return root
+
+    if(root.left != None):
+        return is_tree_DAG( root.left, path, k)
+
+    if(root.right != None):
+        return is_tree_DAG( root.right, path, k)
+
+    return None    
+    
+
 
 
 # Returns LCA if node n1 , n2 are present in the given 
@@ -57,14 +95,3 @@ def findLCA(root, n1, n2):
             break
         i += 1
     return path1[i-1] 
-  
-
-    root = Node(1) 
-    root.left = Node(2) 
-    root.right = Node(3) 
-    root.left.left = Node(4) 
-    root.left.right = Node(5) 
-    root.right.left = Node(6) 
-    root.right.right = Node(7)
-
-    print ("LCA(4, 5) = " , findLCA(root, 4, 5)) 
