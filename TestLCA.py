@@ -144,47 +144,44 @@ class TestLCA(unittest.TestCase):
 
         # example where nodes are equal
         expectedOutput = 3
-        actualOutput = findLCA(root, 3, 3)
+        actualOutput = find_LCA_DAG(root, 3, 3)
         self.assertEqual(actualOutput, expectedOutput)
 
         # example where nodes aren't in graph 
         expectedOutput = -1
-        actualOutput = findLCA(root, 0, 8)
+        actualOutput = find_LCA_DAG(root, 0, 8)
         self.assertEqual(actualOutput, expectedOutput)
 
         # standard dag examples
         expectedOutput = 1
-        actualOutput = findLCA(root, 1, 7)
+        actualOutput = find_LCA_DAG(root, 1, 7)
         self.assertEqual(actualOutput, expectedOutput)
 
         expectedOutput = 2
-        actualOutput = findLCA(root, 2, 3)
+        actualOutput = find_LCA_DAG(root, 2, 3)
         self.assertEqual(actualOutput, expectedOutput)
 
         expectedOutput = 4                      
-        actualOutput = findLCA(root, 4, 7)
+        actualOutput = find_LCA_DAG(root, 4, 7)
         self.assertEqual(actualOutput, expectedOutput)
 
-        expectedOutput = 5                      # Incorrect output
-        actualOutput = findLCA(root, 5, 4)
+        expectedOutput = 5                      
+        actualOutput = find_LCA_DAG(root, 4, 5)
         self.assertEqual(actualOutput, expectedOutput)        
 
-        expectedOutput = 6                      # Incorrect output
-        actualOutput = findLCA(root, 4, 6)
+        expectedOutput = 6                      
+        actualOutput = find_LCA_DAG(root, 4, 6)
         self.assertEqual(actualOutput, expectedOutput)
 
         expectedOutput = 1
-        actualOutput = findLCA(root, 2, 5)
+        actualOutput = find_LCA_DAG(root, 2, 5)
         self.assertEqual(actualOutput, expectedOutput)
 
-        expectedOutput = 6                       # Incorrect output
-        actualOutput = findLCA(root, 6, 7)
+        expectedOutput = 6                       
+        actualOutput = find_LCA_DAG(root, 6, 7)
         self.assertEqual(actualOutput, expectedOutput)
         
-        path = []
-        expectedOutput = 1
-        actualOutput = is_tree_DAG(root, path, 4).key
-        self.assertEqual(actualOutput, expectedOutput)
+
 
                
 
