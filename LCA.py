@@ -6,9 +6,6 @@ class Node:
         self.key =  key 
         self.left = None
         self.right = None
-        self.xAncestor = False
-        self.yAncestor = False
-        self.count = 0
 
 
 # Finds the path from root node to given root of the tree. 
