@@ -180,10 +180,71 @@ class TestLCA(unittest.TestCase):
         expectedOutput = 6                       
         actualOutput = find_LCA_DAG(root, 6, 7)
         self.assertEqual(actualOutput, expectedOutput)
+
+        # clear tree for next tests
+        root = None
+
+
+        # More complex DAG example
+        root = Node(1)                                  #               1
+        root.left = Node(2)                             #              / \
+        root.left.left = Node(3)                        #             /   \
+        root.left.right = Node(4)                       #            2     6
+        root.left.left.right = Node(5)                  #           / \   / \
+        root.left.right.left = Node(5)                  #          3   4 7   8
+        root.right = Node(6)                            #           \ /   \ /
+        root.right.left = Node(7)                       #            5     9
+        root.right.right = Node(8)
+        root.right.left.right = Node(9)
+        root.right.right.left = Node(9)
         
+        # example where nodes are equal
+        expectedOutput = 3
+        actualOutput = find_LCA_DAG(root, 3, 3)
+        self.assertEqual(actualOutput, expectedOutput)
 
+        # example where nodes aren't in graph 
+        expectedOutput = -1
+        actualOutput = find_LCA_DAG(root, 0, 10)
+        self.assertEqual(actualOutput, expectedOutput)
 
-               
+        # standard dag examples
+        expectedOutput = 1
+        actualOutput = find_LCA_DAG(root, 1, 9)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 1
+        actualOutput = find_LCA_DAG(root, 2, 6)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 2
+        actualOutput = find_LCA_DAG(root, 2, 3)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 6
+        actualOutput = find_LCA_DAG(root, 6, 9)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 1                      
+        actualOutput = find_LCA_DAG(root, 4, 7)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 2                      
+        actualOutput = find_LCA_DAG(root, 3, 4)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 6                      # Test Fails, actualOutput = 7
+        actualOutput = find_LCA_DAG(root, 7, 9)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 2                     # Test Fails, actualOutput = 4 
+        actualOutput = find_LCA_DAG(root, 4, 5)
+        self.assertEqual(actualOutput, expectedOutput)
+
+        expectedOutput = 1                     # Test Fails, actualOutput = None  
+        actualOutput = find_LCA_DAG(root, 5, 9)
+        self.assertEqual(actualOutput, expectedOutput)       
+
 
 
 if __name__ == '__main__':
