@@ -106,40 +106,81 @@ def find_LCA_DAG(root, n1, n2):
     path1_1 = [] 
     path2_1 = [] 
 
-    # return either None or a node with a path to n1 for node1 or n2 for node2
+    # return either None or a node with a path to n1 
     node1 = is_tree_DAG( root, path1_1, n1)
-    node2 = is_tree_DAG( root, path2, n2)
+    # return either None or a node with a path to n2 
+    node2 = is_tree_DAG( root, path2_1, n2)
 
 
     # if no DAG found then find LCA regular way
     if(node1 is None and node2 is None):
         return findLCA(root, n1, n2)
 
+    # Extra path variables for DAG cases
     path1_1 = []
     path1_2 = []
     path2_1 = []
     path2_2 = []
 
+    #Case where both n1 and n2 have more than one path, return highest root
+    if(node1 != None and node2 != None):
+        return root
+
+
+    # If not DAG, find path as usual
     if(node1 is None):
         findPath(root, path1_1, n1)
-    else
+    # else find both paths from root to n1: ((path root to node1) + (path node1 to n1))
+    else:
         findPath(root, path1_1, node1)
         findPath(node1.left, path1_1, n1)
 
         findPath(root, path1_2, node1)
         findPath(node1.right, path1_2, n1)
 
+    # If not DAG, find path as usual
     if(node2 is None):
-        findPath(root, path2_1, n2)  
-    else
+        findPath(root, path2_1, n2)
+    # else find both paths from root to n2: ((path root to node2) + (path node2 to n2))
+    else:
         findPath(root, path2_1, node2)
         findPath(node2.left, path2_1, n2)
 
         findPath(root, path2_2, node2)
         findPath(node2.right, path2_2, n2) 
-  
-    i = 0 
-    while(i < len(path1) and i < len(path2)):  
+
+# Case where n1 has 2 paths and n2 has 1 path    
+    if(path2_2 == []):
+
+        i = len(path1_1) - 1 
+        while(i >= 0): 
+            if path1_1[i] == n1.key: 
+                return n1.key
+            i -= 1        
+        
+        i = len(path1_2) - 1 
+        while(i >= 0): 
+            if path1_2[i] == n1.key: 
+                return n1.key
+            i -= 1 
+
+# Case where n2 has 2 paths and n1 has 1 path 
+    if(path1_2 == []):
+
+        i = len(path2_1) - 1 
+        while(i >= 0): 
+            if path2_1[i] == n2.key: 
+                return n2.key
+            i -= 1 
+
+        i = len(path2_2) - 1 
+        while(i >= 0): 
+            if path2_2[i] == n2.key: 
+                return n2.key
+            i -= 1               
+
+
+           
 
 # function which uses is_tree_DAG(root,path,k) for nodes n1 n2 given in LCA query. 
 # If not DAG, find LCA normal way
