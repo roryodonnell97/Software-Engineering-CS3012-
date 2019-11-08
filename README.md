@@ -1,5 +1,7 @@
 # Software-Engineering-CS3012-
 
+Module name should be CSU33012
+
 
 LCA.py contains the main functions for the program.
 
